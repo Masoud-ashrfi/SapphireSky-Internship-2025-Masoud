@@ -7,13 +7,20 @@ function checkEvenOdd(n) {
 
 //Question 2
 function gradeCalculator(score) {
-  if (score >= 90 && score <= 100) console.log("A");
-  if (score >= 80 && score <= 89) console.log("B");
-  if (score >= 70 && score <= 79) console.log("C");
-  if (score >= 60 && score <= 69) console.log("D");
-  if (score < 60) console.log("F");
+  if (score > 100) {
+    console.log("Invalid Score");
+  }
+  if (score >= 90 && score <= 100) {
+    console.log("A");
+  } else if (score >= 80) {
+    console.log("B");
+  } else if (score >= 70) {
+    console.log("C");
+  } else if (score >= 60 && score <= 69) {
+    console.log("D");
+  } else if (score < 60) console.log("F");
 }
-// gradeCalculator(100);
+gradeCalculator(110);
 
 //Question 3
 function minTwoNumbers(num1, num2) {
