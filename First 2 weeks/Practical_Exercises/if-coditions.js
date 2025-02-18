@@ -144,7 +144,7 @@ function factorial(number) {
   }
   return factorial;
 }
-console.log(factorial(0));
+// console.log(factorial(0));
 
 //Question 9
 function findSum(arr) {
