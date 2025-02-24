@@ -20,7 +20,7 @@ function gradeCalculator(score) {
     console.log("D");
   } else if (score < 60) console.log("F");
 }
-gradeCalculator(110);
+// gradeCalculator(110);
 
 //Question 3
 function minTwoNumbers(num1, num2) {
