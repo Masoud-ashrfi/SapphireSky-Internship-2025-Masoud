@@ -237,7 +237,7 @@ function followsPattern(pattern, str) {
   if (words.length !== pattern.length) return false;
 
   let charToWord = {};
-  let WordToChar = {};
+  let wordToChar = {};
 
   for (let i = 0; i < pattern.length; i++) {
     let char = pattern[i];
@@ -249,12 +249,12 @@ function followsPattern(pattern, str) {
     }
 
     // If the word is already mapped, ensure it maps to the same character
-    if (WordToChar[word] && WordToChar[word] !== char) {
+    if (wordToChar[word] && wordToChar[word] !== char) {
       return false;
     }
 
     charToWord[char] = word;
-    WordToChar[word] = char;
+    wordToChar[word] = char;
   }
 
   return true;
