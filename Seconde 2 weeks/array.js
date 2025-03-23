@@ -117,12 +117,16 @@ function mergeSortedArrays(array1, array2) {
 
 //Question8: Implement a function that rotates an array k times to the right.
 function rotateArrayToTheRight(arr, k) {
+  if (arr.length === 0 || k === 0) return arr;
+
+  k = k % arr.length;
+
   const rotateArray = [...arr.slice(-k)];
   rotateArray.push(...arr.slice(0, arr.length - k));
 
   return rotateArray;
 }
-// console.log(rotateArrayToTheRight([1, 2, 3, 4, 5], 2));
+console.log(rotateArrayToTheRight([1, 2, 3, 4, 5], 0));
 
 //Question9: Write a function to find the second largest number in an array.
 function secondLargestNumber(arr) {
@@ -169,15 +173,19 @@ function findIntersection(firstArr, secondArr) {
 /////////////////////////Hard
 //Question11: How do you remove duplicates from an array efficiently?
 function removeDuplicates(arr) {
-  let removeDup = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (removeDup.indexOf(arr[i]) === -1) {
-      removeDup.push(arr[i]);
+  const map = new Map();
+  const result = [];
+
+  for (let item of arr) {
+    if (!map.has(item)) {
+      map.set(item, true);
+      result.push(item);
     }
   }
-  return removeDup;
+
+  return result;
 }
-// console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
 
 //Question12: Write a function to find the missing number in an array of 1 to N.
 function findMissingNum(arr, num) {
