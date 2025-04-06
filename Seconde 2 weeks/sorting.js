@@ -94,6 +94,46 @@ function sortArr(arr) {
 
 /////////////////////////Medium
 //Question6: Implement Merge Sort and explain its time complexity.
+//  The time complexity of Merge Sort is O(n log n) in all cases — best, average, and worst. This is because the algorithm works by dividing the array in half at each recursive step, which takes log n levels of splitting. At each level, it processes and merges all n elements, which takes O(n) time. So, overall, the time it takes is the number of levels (log n) multiplied by the work done at each level (n), which gives O(n log n). This makes Merge Sort one of the most efficient general-purpose sorting algorithms.
+function mergeSort(array) {
+  // Base case: if array has 1 or 0 items, it's already sorted
+  if (array.length <= 1) return array;
+
+  // Step 1: Split into two halves
+  const middle = Math.floor(array.length / 2);
+  const leftHalf = array.slice(0, middle);
+  const rightHalf = array.slice(middle);
+
+  // Step 2: Sort both halves
+  const sortedLeft = mergeSort(leftHalf);
+  const sortedRight = mergeSort(rightHalf);
+
+  // Step 3: Merge them back in sorted order
+  return merge(sortedLeft, sortedRight);
+}
+
+// This function merges two sorted arrays into one sorted array
+function merge(left, right) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+
+  // Compare elements from both arrays
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
+    }
+  }
+
+  // Add any remaining elements from both sides
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}
+const arr = [6, 2, 9, 1];
+console.log(mergeSort(arr)); // Output: [1, 2, 6, 9]
 
 //Question7: Implement Quick Sort and explain how pivot selection affects performance.
 
