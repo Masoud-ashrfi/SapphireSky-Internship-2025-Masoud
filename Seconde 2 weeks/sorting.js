@@ -56,7 +56,7 @@ function insertionSort(arr) {
   }
   return arr;
 }
-console.log(insertionSort([64, 25, 12, 22, 11])); // Output: [11, 12, 22, 25, 64]
+// console.log(insertionSort([64, 25, 12, 22, 11])); // Output: [11, 12, 22, 25, 64]
 
 //Question4: Compare the time complexities of different sorting algorithms.
 // 1. Selection Sort
@@ -133,9 +133,47 @@ function merge(left, right) {
   return result.concat(left.slice(i)).concat(right.slice(j));
 }
 const arr = [6, 2, 9, 1];
-console.log(mergeSort(arr)); // Output: [1, 2, 6, 9]
+// console.log(mergeSort(arr)); // Output: [1, 2, 6, 9]
 
 //Question7: Implement Quick Sort and explain how pivot selection affects performance.
+// How Pivot Affects Performance
+// The choice of pivot is very important in Quick Sort:
+// ✅ Best Case (Balanced Split):
+// The pivot divides the array in half every time.
+// Time complexity: O(n log n)
+// Example: [6, 2, 9, 1] → pivot 2 splits into [1] and [6, 9] — nice and balanced!
+
+// ❌ Worst Case (Unbalanced Split):
+// If the pivot is always the smallest or largest value:
+// All elements go into one side (left or right)
+// Time complexity: O(n²)
+// Example: sorting [1, 2, 3, 4, 5] with pivot as last element (5, then 4, etc.)
+// This behaves like Bubble Sort 😬
+
+// 📌 Common Pivot Strategies:
+// Pivot Strategy	             Description	                            Performance
+// Last element            Easy to implement 	                      Risky on sorted data
+// First element	     Same as last — can be bad on sorted arrays	        Risky
+// Middle element	       Safer, more balanced	                            Better
+// Random element	      Best average-case performance	                   Recommended
+// Median-of-three	     Take median of first, middle, last               	Very good
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  const pivot = arr[arr.length - 1]; // pick last element as pivot
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
 
 //Question8: Write a function to perform Counting Sort.
 
